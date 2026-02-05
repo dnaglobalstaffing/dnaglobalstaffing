@@ -3,9 +3,43 @@ const path = require("path");
 
 const app = express();
 
+// static files
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+/* =======================
+   CLEAN URL ROUTES
+======================= */
+app.get("/contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "contact.html"));
+});
+
+app.get("/services", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "services.html"));
+});
+
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "about.html"));
+});
+
+/* =======================
+   HTML → CLEAN URL REDIRECTS
+======================= */
+app.get("/contact.html", (req, res) => {
+  res.redirect(301, "/contact");
+});
+
+app.get("/services.html", (req, res) => {
+  res.redirect(301, "/services");
+});
+
+app.get("/about.html", (req, res) => {
+  res.redirect(301, "/about");
+});
+
+/* =======================
+   FORM SUBMIT
+======================= */
 app.post("/request-service", (req, res) => {
   console.log("New Service Request:", req.body);
 
@@ -20,5 +54,5 @@ app.post("/request-service", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Server running at http://localhost:" + PORT);
+  console.log("Server running on port", PORT);
 });
