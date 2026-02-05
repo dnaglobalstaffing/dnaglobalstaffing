@@ -1,0 +1,14 @@
+{
+  "name": "dna-global-staffing",
+  "version": "1.0.0",
+  "description": "DNA Global Staffing official website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
