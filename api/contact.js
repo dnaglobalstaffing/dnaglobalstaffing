@@ -4,12 +4,24 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).send("Method Not Allowed");
   }
 
-  const { name, phone, service, location, message } = req.body;
-
   try {
+    // 👇 MANUAL BODY PARSING (IMPORTANT)
+    let body = "";
+    for await (const chunk of req) {
+      body += chunk.toString();
+    }
+
+    const params = new URLSearchParams(body);
+
+    const name = params.get("name");
+    const phone = params.get("phone");
+    const service = params.get("service");
+    const location = params.get("location");
+    const message = params.get("message");
+
     await resend.emails.send({
       from: "DNA Global Staffing <onboarding@resend.dev>",
       to: ["dnaglobalstaffing@googlegroups.com"],
@@ -24,8 +36,12 @@ export default async function handler(req, res) {
       `,
     });
 
-    return res.status(200).send("Request sent successfully");
+    // 👇 SUCCESS REDIRECT (BACK TO CONTACT PAGE)
+    res.status(302).setHeader("Location", "/contact.html");
+    res.end();
+
   } catch (error) {
-    return res.status(500).send("Error sending email");
+    console.error("Resend error:", error);
+    res.status(500).send("Email failed");
   }
 }
