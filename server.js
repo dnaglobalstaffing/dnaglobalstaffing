@@ -7,9 +7,8 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-/* =======================
-   CLEAN URL ROUTES
-======================= */
+ 
+
 app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "contact.html"));
 });
@@ -55,4 +54,4 @@ app.post("/request-service", (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
-});
+
