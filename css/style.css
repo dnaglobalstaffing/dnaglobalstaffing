@@ -719,3 +719,20 @@ nav a {
   text-align: center;
   margin-top: 40px;
 }
+
+/* ===== CONTACT FORM UI ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
