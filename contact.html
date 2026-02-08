@@ -1,157 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Contact Us | DNA Global Staffing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- MAIN CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">DNA Global Staffing</div>
-
       <nav class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html" class="active">Contact</a>
-      </nav>
+  <a href="/">Home</a>
+  <a href="HealthCareAssistant.html">Health Care Assistant</a>
+  <a href="SeniorCarerAssistant.html">Senior Carer Assistant</a>
+  <a href="KitchenAssistant.html">Kitchen Assistant</a>
+  <a href="DomesticAssistant.html">Domestic Assistant</a>
+  <a href="RegisteredNurse.html">Registered Nurse</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
     </div>
   </header>
 
-  <!-- ================= PAGE HEADER ================= -->
+  <!-- PAGE HEADER -->
   <section class="page-header">
     <h1>Contact Us</h1>
-    <p>Professional healthcare staffing & patient support services</p>
+    <p>We are here to help you with reliable home staffing services.</p>
   </section>
 
-  <!-- ================= CONTACT SECTION ================= -->
+  <!-- CONTACT WRAPPER -->
   <section class="contact-wrapper">
 
-    <!-- -------- LEFT INFO -------- -->
+    <!-- LEFT INFO -->
     <div class="contact-info">
       <h2>Get in Touch</h2>
 
       <p>
-        <strong>📞 Phone:</strong><br />
-        <a href="tel:+447438821200">+44 7438 821200</a>
-      </p>
+  <strong>📞 Phone:</strong><br>
+  <a href="tel:+447438821200">+44 7438 821200</a>
+</p>
 
-      <p>
-        <strong>📧 Email:</strong><br />
-        <a href="mailto:dnaglobalstaffing@googlegroups.com">
-          dnaglobalstaffing@googlegroups.com
-        </a>
-      </p>
+<p>
+  <strong>📧 Email:</strong><br>
+  <a href="mailto:dnaglobalstaffing@gmail.com">
+    dnaglobalstaffing@gmail.com
+  </a>
+</p>
 
-      <p>
-        <strong>📍 Address:</strong><br />
-        London, United Kingdom
-      </p>
+<p>
+  <strong>📍 Address:</strong><br>
+  London, United Kingdom
+</p>
+
 
       <!-- MAP -->
       <div class="map-box">
-        <iframe
+        <iframe 
           src="https://www.google.com/maps?q=London%2C%20United%20Kingdom&output=embed"
-          loading="lazy"
-          allowfullscreen>
+          allowfullscreen=""
+          loading="lazy">
         </iframe>
       </div>
     </div>
 
-    <!-- -------- RIGHT FORM -------- -->
+    <!-- RIGHT FORM -->
     <div class="contact-form-box">
       <h2>Request a Service</h2>
 
-      <!-- ===== VERCEL + RESEND FORM ===== -->
-      <form action="/api/contact" method="POST">
+      <form action="/request-service" method="POST">
 
-        <!-- FULL NAME -->
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          minlength="2"
-          required
-        />
+        <input type="text" name="name" placeholder="Your Name" required>
 
-        <!-- EMAIL (OPTIONAL BUT VALID) -->
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address (optional)"
-        />
+        <input type="tel" name="phone" placeholder="Mobile Number" required>
 
-        <!-- PHONE WITH COUNTRY CODE -->
-        <input
-          type="tel"
-          name="phone"
-          placeholder="+447438821200"
-          pattern="^\+[1-9]\d{7,14}$"
-          title="Use country code, e.g. +447438821200"
-          required
-        />
-
-        <!-- SERVICE -->
         <select name="service" required>
-          <option value="">Select Healthcare Service</option>
-          <option>Home Healthcare</option>
+          <option value="">Select Service</option>
+          <option>Home Services</option>
           <option>Patient Care</option>
           <option>Elder Care</option>
-          <option>Child & Pediatric Care</option>
+          <option>Babysitter</option>
         </select>
 
-        <!-- LOCATION -->
-        <input
-          type="text"
-          name="location"
-          placeholder="Your Location"
-          required
-        />
+        <input type="text" name="location" placeholder="Your Location" required>
 
-        <!-- MESSAGE -->
-        <textarea
-          name="message"
-          rows="4"
-          placeholder="Additional details (optional)">
-        </textarea>
+        <textarea name="message" rows="4" placeholder="Message (optional)"></textarea>
 
-        <!-- SUBMIT -->
-        <button type="submit" class="btn-primary full">
-          Submit Request
-        </button>
+        <button type="submit" class="btn-primary full">Submit Request</button>
 
       </form>
     </div>
 
   </section>
+  <!-- FLOATING WHATSAPP BUTTON -->
+<a
+  href="https://wa.me/+447438821200"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span>WhatsApp</span>
+</a>
 
-  <!-- ================= WHATSAPP FLOAT ================= -->
-  <a
-    href="https://wa.me/447438821200"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat on WhatsApp">
-    WhatsApp
-  </a>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 DNA Global Staffing. All rights reserved.</p>
   </footer>
+<script src="js/main.js"></script>
 
-  <!-- JS -->
-  <script src="js/main.js"></script>
 </body>
 </html>
