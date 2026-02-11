@@ -132,42 +132,88 @@ button:hover{
 
 <script>
 
-function nextStep(){
+document.addEventListener("DOMContentLoaded", function(){
+
+/* ================= STEP NAVIGATION ================= */
+
+window.nextStep = function(){
+
+    const form = document.getElementById("applicationForm");
+
+    // Validate only visible required fields
+    const requiredFields = document.querySelectorAll("#step1 [required]");
+
+    for(let field of requiredFields){
+        if(!field.value.trim()){
+            alert("Please fill all required fields before proceeding.");
+            field.focus();
+            return;
+        }
+    }
+
     document.getElementById("step1").style.display = "none";
     document.getElementById("step2").style.display = "block";
     window.scrollTo(0,0);
-}
+};
 
-function previousStep(){
+window.previousStep = function(){
     document.getElementById("step2").style.display = "none";
     document.getElementById("step1").style.display = "block";
     window.scrollTo(0,0);
-}
+};
 
-function goBackToConsent(){
+window.goBackToConsent = function(){
     document.getElementById("step3").style.display = "none";
     document.getElementById("step2").style.display = "block";
     window.scrollTo(0,0);
-}
+};
 
-function showRCNi(value){
-    if(value=="Yes"){
+/* ================= RCNi SHOW HIDE ================= */
+
+window.showRCNi = function(value){
+    if(value === "Yes"){
         document.getElementById("rcniField").style.display="block";
-    }else{
+    } else {
         document.getElementById("rcniField").style.display="none";
     }
-}
+};
 
-function reviewForm(){
+/* ================= REVIEW PAGE ================= */
+
+window.reviewForm = function(){
+
+    const requiredFields = document.querySelectorAll("#step2 [required]");
+
+    for(let field of requiredFields){
+        if(!field.value.trim()){
+            alert("Please accept terms and complete required fields.");
+            field.focus();
+            return;
+        }
+    }
 
     const form = document.getElementById("applicationForm");
     const formData = new FormData(form);
 
-    let reviewHTML = "<h3>Submitted Information:</h3><hr>";
+    let reviewHTML = `
+        <h3>Application Summary</h3>
+        <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    `;
 
     for (let [key, value] of formData.entries()) {
-        reviewHTML += "<p><b>" + key + ":</b> " + value + "</p>";
+
+        if(value && value.trim() !== ""){
+
+            reviewHTML += `
+                <tr>
+                    <td style="font-weight:bold; background:#f5f5f5;">${key}</td>
+                    <td>${value}</td>
+                </tr>
+            `;
+        }
     }
+
+    reviewHTML += "</table>";
 
     document.getElementById("reviewContent").innerHTML = reviewHTML;
 
@@ -175,18 +221,11 @@ function reviewForm(){
     document.getElementById("step3").style.display = "block";
 
     window.scrollTo(0,0);
-}
+};
 
-document.getElementById("applicationForm").addEventListener("submit", function(e){
-    e.preventDefault();
-});
+/* ================= FINAL SUBMIT ================= */
 
-
-</script>
-
-<script>
-
-async function submitApplication() {
+window.submitApplication = async function(){
 
     const form = document.getElementById("applicationForm");
     const formData = new FormData(form);
@@ -194,7 +233,9 @@ async function submitApplication() {
     const data = {};
 
     formData.forEach((value, key) => {
-        data[key] = value;
+        if(value && value.trim() !== ""){
+            data[key] = value;
+        }
     });
 
     try {
@@ -219,7 +260,9 @@ async function submitApplication() {
     } catch (error) {
         alert("Server Error!");
     }
-}
+};
+
+});
 
 </script>
 
