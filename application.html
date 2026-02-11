@@ -14,10 +14,12 @@ body{
 }
 
 .container{
-    max-width:1150px;
-    margin:auto;
+    max-width:1100px;
+    margin:40px auto;
     background:#ffffff;
-    padding:40px;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
 }
 
 h1{
@@ -127,6 +129,21 @@ button:hover{
 .hidden{
     display:none;
 }
+
+    .table-wrapper{
+    width:100%;
+    overflow-x:auto;
+    margin-bottom:20px;
+}
+
+.grid-table{
+    min-width:900px; /* important */
+    display:grid;
+    grid-template-columns: 50px 1.5fr 1.5fr 150px 150px 150px;
+    gap:15px;
+    align-items:center;
+}
+
 
 </style>
 
@@ -531,6 +548,7 @@ window.submitApplication = async function(){
 
 <h2 class="section-title">Part 3: Academic Qualifications <span class="required">*</span></h2>
 
+<div class="table-wrapper">
 <div class="grid-table">
 
 <div></div>
@@ -567,6 +585,8 @@ window.submitApplication = async function(){
 
 
 </div>
+    </div>
+    
 
 <p class="note">Kindly provide details of your vocational / academic qualifications from the most recent.</p>
 
@@ -574,7 +594,9 @@ window.submitApplication = async function(){
 
 <h2 class="section-title">Part 4: Employment History <span class="required">*</span></h2>
 
+<div class="table-wrapper">
 <div class="grid-table">
+
 
 <div></div>
 <div><b>Employer / Name of Company and Address <span class="required">*</span></b></div>
@@ -605,6 +627,7 @@ window.submitApplication = async function(){
 <input>
 
 </div>
+    </div>
 
 <p class="note">Please write your current and previous employment history (most recent first)</p>
 
